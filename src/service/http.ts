@@ -10,7 +10,15 @@ export interface IFetchOption {
   /**
    * http 请求方法
    */
-  method?: "GET" | "POST" | "PUT" | "DELETE" | "OPTIONS" | "HEAD" | "TRACE" | "CONNECT";
+  method?:
+    | "GET"
+    | "POST"
+    | "PUT"
+    | "DELETE"
+    | "OPTIONS"
+    | "HEAD"
+    | "TRACE"
+    | "CONNECT";
 
   /**
    * 请求头
@@ -63,7 +71,7 @@ async function fetch<T>(option: IFetchOption) {
     header,
     data
   })
-    .then(res => {
+    .then((res) => {
       const { code } = res.data;
 
       if (code !== SUCCESS) {
@@ -72,7 +80,7 @@ async function fetch<T>(option: IFetchOption) {
 
       return res.data;
     })
-    .catch(err => {
+    .catch((err) => {
       console.error(err.error || err.message || "请求异常");
 
       if (showErrorToast) {
@@ -85,7 +93,7 @@ async function fetch<T>(option: IFetchOption) {
 
       // 继续抛出错误, 便于后续逻辑的处理
       return Promise.reject(err);
-    });
+    })
 }
 
 export default {
@@ -95,4 +103,4 @@ export default {
   post<T = any>(option: IFetchOption) {
     return fetch<T>({ ...option, method: "POST" });
   }
-};
+}

@@ -5,11 +5,10 @@ import "./app.scss";
 import store from "./store/index";
 
 class App extends Component {
-
   componentDidMount() {
     const updateManager = Taro.getUpdateManager();
 
-    updateManager.onCheckForUpdate(res => {
+    updateManager.onCheckForUpdate((res) => {
       console.log(res);
     });
 
@@ -17,14 +16,14 @@ class App extends Component {
       Taro.showModal({
         title: "更新提示",
         content: "新版本准备就绪，是否重启应用？",
-        success: res => {
+        success: (res) => {
           if (res.confirm) {
             updateManager.applyUpdate();
           }
         }
       });
     });
-    updateManager.onUpdateFailed(res => {
+    updateManager.onUpdateFailed((res) => {
       console.log(res);
     });
   }
@@ -40,11 +39,7 @@ class App extends Component {
 
   // this.props.children 是将要会渲染的页面
   render() {
-    return (
-      <Provider store={store}>
-        {this.props.children}
-      </Provider>
-    );
+    return <Provider store={store}>{this.props.children}</Provider>;
   }
 }
 

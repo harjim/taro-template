@@ -5,4 +5,5 @@ import apiAddr from "../constant/apiAddr";
 import http from "./http";
 
 export const login = () => http.get({ url: apiAddr.login });
-export const about = () => http.get({ url: apiAddr.about, showErrorToast: false });
+export const about = () =>
+  http.get({ url: apiAddr.about, showErrorToast: false });
