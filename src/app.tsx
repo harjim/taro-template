@@ -1,9 +1,8 @@
-import { Component } from "react"
-import { Provider } from "react-redux"
-
-import store from "./store/index"
-import log from "./utils/log"
-import "./app.scss"
+import { Component } from 'react'
+import { Provider } from 'react-redux'
+import store from 'store/index'
+import log from 'utils/log'
+import './app.scss'
 
 class App extends Component {
   componentDidMount() {

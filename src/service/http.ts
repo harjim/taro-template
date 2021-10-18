@@ -1,63 +1,63 @@
-import Taro from "@tarojs/taro";
-import { SUCCESS } from "../constant/statusCode";
+import Taro from '@tarojs/taro'
+import { SUCCESS } from 'constant/statusCode'
 
 export interface IFetchOption {
   /**
    * 请求资源地址
    */
-  url: string;
+  url: string
 
   /**
    * http 请求方法
    */
   method?:
-    | "GET"
-    | "POST"
-    | "PUT"
-    | "DELETE"
-    | "OPTIONS"
-    | "HEAD"
-    | "TRACE"
-    | "CONNECT";
+    | 'GET'
+    | 'POST'
+    | 'PUT'
+    | 'DELETE'
+    | 'OPTIONS'
+    | 'HEAD'
+    | 'TRACE'
+    | 'CONNECT'
 
   /**
    * 请求头
    */
-  header?: Record<string, any>;
+  header?: Record<string, any>
 
   /**
    * 请求的参数
    */
-  data?: Record<string, any>;
+  data?: Record<string, any>
 
   /**
    * 错误时是否显示 toast
    * @default true
    */
-  showErrorToast?: boolean;
+  showErrorToast?: boolean
 }
 
 export interface IResponse<T = any> {
   /**
    * 后台定义的状态码
    */
-  code: number;
+  code: number
 
   /**
    * 后台定义的 message
    */
-  message: string;
+  message: string
 
   /**
    * 实际返回数据
    */
-  data?: T;
+  data?: T
 }
 
-Taro.addInterceptor(Taro.interceptors.logInterceptor);
+Taro.addInterceptor(Taro.interceptors.logInterceptor)
 
 async function fetch<T>(option: IFetchOption) {
-  const { url, data, header, method, showErrorToast = true } = option;
+  const { url, data, header, method, showErrorToast = true } = option
 
   // 这里可以根据业务需求对 header 进行改造
 
@@ -69,38 +69,38 @@ async function fetch<T>(option: IFetchOption) {
     url,
     method,
     header,
-    data
+    data,
   })
     .then((res) => {
-      const { code } = res.data;
+      const { code } = res.data
 
       if (code !== SUCCESS) {
-        return Promise.reject(res.data);
+        return Promise.reject(res.data)
       }
 
-      return res.data;
+      return res.data
     })
     .catch((err) => {
-      console.error(err.error || err.message || "请求异常");
+      console.error(err.error || err.message || '请求异常')
 
       if (showErrorToast) {
         Taro.showToast({
-          title: err.error || err.message || "请求异常",
-          icon: "none",
-          duration: 2000
+          title: err.error || err.message || '请求异常',
+          icon: 'none',
+          duration: 2000,
         })
       }
 
       // 继续抛出错误, 便于后续逻辑的处理
-      return Promise.reject(err);
+      return Promise.reject(err)
     })
 }
 
 export default {
   get<T = any>(option: IFetchOption) {
-    return fetch<T>({ ...option, method: "GET" });
+    return fetch<T>({ ...option, method: 'GET' })
   },
   post<T = any>(option: IFetchOption) {
-    return fetch<T>({ ...option, method: "POST" });
-  }
+    return fetch<T>({ ...option, method: 'POST' })
+  },
 }

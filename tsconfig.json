@@ -13,7 +13,33 @@
     "noUnusedParameters": true,
     "strictNullChecks": true,
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "assets/*": [
+        "./src/assets/*"
+      ],
+      "constant/*": [
+        "./src/constant/*"
+      ],
+      "components/*": [
+        "./src/components/*"
+      ],
+      "service/*": [
+        "./src/service/*"
+      ],
+      "store/*": [
+        "./src/store/*"
+      ],
+      "styles/*": [
+        "./src/styles/*"
+      ],
+      "utils/*": [
+        "./src/utils/*"
+      ]
+    },
     "rootDir": ".",
     "jsx": "react-jsx",
     "allowJs": true,

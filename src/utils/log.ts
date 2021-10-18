@@ -1,46 +1,46 @@
-import Taro from "@tarojs/taro";
+import Taro from '@tarojs/taro'
 
-const log = Taro.getRealtimeLogManager();
-const isDev = process.env.NODE_ENV === "development";
+const log = Taro.getRealtimeLogManager()
+const isDev = process.env.NODE_ENV === 'development'
 
 export default {
   info(...args: any[]) {
     if (isDev) {
-      return console.info(...args);
+      return console.info(...args)
     }
     if (!log) {
-      return;
+      return
     }
-    log.info(...args);
+    log.info(...args)
   },
   warn(...args: any[]) {
     if (isDev) {
-      return console.warn(...args);
+      return console.warn(...args)
     }
     if (!log) {
-      return;
+      return
     }
-    log.warn(...args);
+    log.warn(...args)
   },
   error(...args: any[]) {
     if (isDev) {
-      return console.error(...args);
+      return console.error(...args)
     }
     if (!log) {
-      return;
+      return
     }
-    log.error(...args);
+    log.error(...args)
   },
   setFilterMsg(msg: string) {
     if (!log || !log.setFilterMsg || isDev) {
-      return;
+      return
     }
-    log.setFilterMsg(msg);
+    log.setFilterMsg(msg)
   },
   addFilterMsg(msg: string) {
     if (!log || !log.addFilterMsg || isDev) {
-      return;
+      return
     }
-    log.addFilterMsg(msg);
-  }
+    log.addFilterMsg(msg)
+  },
 }
