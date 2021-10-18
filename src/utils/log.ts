@@ -43,4 +43,4 @@ export default {
     }
     log.addFilterMsg(msg);
   }
-};
+}

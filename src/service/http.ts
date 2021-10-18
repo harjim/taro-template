@@ -88,7 +88,7 @@ async function fetch<T>(option: IFetchOption) {
           title: err.error || err.message || "请求异常",
           icon: "none",
           duration: 2000
-        });
+        })
       }
 
       // 继续抛出错误, 便于后续逻辑的处理

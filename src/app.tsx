@@ -1,8 +1,9 @@
 import { Component } from "react";
 import { Provider } from "react-redux";
 
-import "./app.scss";
 import store from "./store/index";
+import log from "./utils/log";
+import "./app.scss";
 
 class App extends Component {
   componentDidMount() {
@@ -34,7 +35,8 @@ class App extends Component {
   componentDidHide() {
   }
 
-  componentDidCatchError() {
+  componentDidCatchError(e: string) {
+    log.error(e);
   }
 
   // this.props.children 是将要会渲染的页面
