@@ -6,11 +6,14 @@
   "rules": {
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
-    "react/quotes": [
-      "off",
-      "single"
+    "jsx-quotes": [
+      "error",
+      "prefer-single"
     ],
-    "semi": "off",
+    "semi": [
+      2,
+      "never"
+    ],
     "quotes": [
       "off",
       "single"
