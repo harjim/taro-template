@@ -27,7 +27,12 @@
     "dev:qq": "npm run build:qq -- --watch",
     "dev:jd": "npm run build:jd -- --watch",
     "dev:quickapp": "npm run build:quickapp -- --watch",
-    "stylefix": "stylelint \"src/**/*.{css, scss}\" --fix"
+    "stylefix": "stylelint \"src/**/*.{css, scss}\" --fix",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{vue, js, ts, jsx, tsx}": "eslint --fix",
+    "*.{css, scss}": "stylelint --fix"
   },
   "browserslist": [
     "last 3 versions",
@@ -60,6 +65,8 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^11.2.3",
     "prettier": "^2.4.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
